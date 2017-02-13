@@ -17,11 +17,12 @@ unbound_num_threads: 1
 unbound_interfaces:
   - 127.0.0.1
   - ::1
-unbound_do_ipv4: "yes"
-unbound_do_ipv6: "yes"
+unbound_outgoing_interfaces: []
+unbound_do_ip4: "yes"
+unbound_do_ip6: "yes"
 unbound_do_udp: "yes"
 unbound_do_tcp: "yes"
-unbound_prefer_ipv6: "no"
+unbound_prefer_ip6: "no"
 
 unbound_outgoing_policies: []
 unbound_access_control: []
@@ -32,6 +33,7 @@ unbound_access_control_view: []
 
 unbound_private_addresses: []
 unbound_private_domains: []
+unbound_domains_insecure: []
 unbound_do_not_query_addresses: []
 unbound_local_zones: []
 unbound_local_datas: []

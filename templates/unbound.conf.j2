@@ -20,10 +20,10 @@ server:
     log-time-ascii: {{ unbound_log_time_ascii }}
     {% endif %}
     {% if unbound_chroot is defined %}
+    chroot: {{ unbound_chroot }}
+    {% endif %}
     {% if unbound_log_queries is defined %}
     log-queries: {{ unbound_log_queries }}
-    {% endif %}
-    chroot: {{ unbound_chroot }}
     {% endif %}
     {% if unbound_pidfile is defined %}
     pidfile: {{ unbound_pidfile }}
@@ -293,12 +293,12 @@ server:
     {% for private_domain in unbound_private_domains %}
     private-domain: {{ private_domain }}
     {% endfor %}
-    {% for domain in unbound_domain_insecure %}
+    {% for domain in unbound_domains_insecure %}
     domain-insecure: {{ domain }}
     {% endfor %}
     {% for do_not_query_address in unbound_do_not_query_addresses %}
     do-not-query-address: {{ do_not_query_address }}
-    {% endif %}
+    {% endfor %}
     {% if unbound_do_not_query_localhost is defined %}
     do-not-query-localhost: {{ unbound_do_not_query_localhost }}
     {% endif %}
@@ -317,7 +317,7 @@ server:
     {% for ptr in unbound_local_data_ptrs %}
     local-data-ptr: {{ ptr }}
     {% endfor %}
-    {% for zone_and_tags in unbound_local_zone_tag %}
+    {% for zone_and_tags in unbound_local_zone_tags %}
     local-zone-tag: {{ zone_and_tags }}
     {% endfor %}
     {% for override in unbound_local_zone_overrides %}
