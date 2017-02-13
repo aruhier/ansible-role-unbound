@@ -71,7 +71,9 @@ server:
 
     do-ip4: {{ unbound_do_ip4 }}
     do-ip6: {{ unbound_do_ip6 }}
+    {% if unbound_prefer_ip6 is defined %}
     prefer-ip6: {{ unbound_prefer_ip6 }}
+    {% endif %}
     {% if unbound_tcp_upstream is defined %}
     tcp-upstream: {{ unbound_tcp_upstream }}
     {% endif %}

@@ -35,7 +35,6 @@ unbound_do_ip4: "yes"
 unbound_do_ip6: "yes"
 unbound_do_udp: "yes"
 unbound_do_tcp: "yes"
-unbound_prefer_ip6: "no"
 
 # list of strings, as the order impact how policies are interpreted
 unbound_outgoing_policies: []

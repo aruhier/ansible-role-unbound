@@ -22,7 +22,6 @@ unbound_do_ip4: "yes"
 unbound_do_ip6: "yes"
 unbound_do_udp: "yes"
 unbound_do_tcp: "yes"
-unbound_prefer_ip6: "no"
 
 unbound_outgoing_policies: []
 unbound_access_control: []
