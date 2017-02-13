@@ -21,6 +21,9 @@
     src: unbound.conf.j2
     dest: "{{ unbound_conf_path }}"
 
+- name: Check unbound.conf
+  command: unbounc-checkconf "{{ unbound_conf_path }}"
+
 - name: Enable unbound service
   service:
     name: "{{ unbound_service_name }}"
