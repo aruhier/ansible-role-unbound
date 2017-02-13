@@ -20,10 +20,13 @@
   template:
     src: unbound.conf.j2
     dest: "{{ unbound_conf_path }}"
+  notify: reload unbound
 
+# Cannot move this part as the `verify` component of the previous task, because
+# unbound-checkconf fails if the file is outside {{ unbound_directory }}
 - name: Check unbound.conf
   command: unbound-checkconf "{{ unbound_conf_path }}"
-  notify: restart unbound
+  changed_when: False
 
 - name: Enable unbound service
   service:
