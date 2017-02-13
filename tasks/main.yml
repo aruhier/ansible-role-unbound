@@ -22,7 +22,8 @@
     dest: "{{ unbound_conf_path }}"
 
 - name: Check unbound.conf
-  command: unbounc-checkconf "{{ unbound_conf_path }}"
+  command: unbound-checkconf "{{ unbound_conf_path }}"
+  notify: restart unbound
 
 - name: Enable unbound service
   service:
