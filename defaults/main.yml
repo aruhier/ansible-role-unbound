@@ -1,0 +1,56 @@
+---
+
+unbound_conf_path: "/etc/unbound/unbound.conf"
+unbound_enable_service: true
+unbound_service_name: "unbound"
+unbound_packages:
+  - "unbound"
+
+### Server ###
+
+unbound_verbosity: 1
+unbound_username: "unbound"
+unbound_directory: "/etc/unbound"
+
+unbound_port: 53
+unbound_num_threads: 1
+unbound_interfaces:
+  - 127.0.0.1
+  - ::1
+unbound_do_ipv4: "yes"
+unbound_do_ipv6: "yes"
+unbound_do_udp: "yes"
+unbound_do_tcp: "yes"
+unbound_prefer_ipv6: "no"
+
+unbound_outgoing_policies: []
+unbound_access_control: []
+unbound_access_control_tag: []
+unbound_access_control_tag_action: []
+unbound_access_control_tag_data: []
+unbound_access_control_view: []
+
+unbound_private_addresses: []
+unbound_private_domains: []
+unbound_do_not_query_addresses: []
+unbound_local_zones: []
+unbound_local_datas: []
+unbound_local_data_ptrs: []
+unbound_local_zone_tags: []
+unbound_local_zone_overrides: []
+
+unbound_trust_anchors: []
+unbound_trusted_keys_files: []
+
+### Remote Control ###
+
+unbound_control_enable: "no"
+unbound_control_interface: []
+
+### Stub, forward zones and others ###
+
+unbound_stub_zones: []  # list of dicts
+unbound_forward_zones: []  # list of dicts
+unbound_views: []  # list of strings, as options can be multiples
+
+# vim: set ts=2 sw=2:

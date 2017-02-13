@@ -1,0 +1,436 @@
+#{{ ansible_managed }}
+
+    {% if unbound_re is defined %}
+    opt: {{ unbound_re }}
+    {% endif %}
+
+server:
+    verbosity: {{ unbound_verbosity }}
+    username: "{{ unbound_username }}"
+    directory: "{{ unbound_directory }}"
+    {% if unbound_use_syslog is defined and unbound_use_syslog == "yes" %}
+    use-syslog: {{ unbound_use_syslog }}
+    {% elif unbound_logfile is defined %}
+    logfile: {{ unbound_logfile }}
+    {% endif %}
+    {% if unbound_log_identity is defined %}
+    log-identity: {{ unbound_log_identity }}
+    {% endif %}
+    {% if unbound_log_time_ascii is defined %}
+    log-time-ascii: {{ unbound_log_time_ascii }}
+    {% endif %}
+    {% if unbound_chroot is defined %}
+    {% if unbound_log_queries is defined %}
+    log-queries: {{ unbound_log_queries }}
+    {% endif %}
+    chroot: {{ unbound_chroot }}
+    {% endif %}
+    {% if unbound_pidfile is defined %}
+    pidfile: {{ unbound_pidfile }}
+    {% endif %}
+    {% if unbound_do_daemonize is defined %}
+    do-daemonize: {{ unbound_do_daemonize }}
+    {% endif %}
+    {% if unbound_statistics_interval is defined %}
+    statistics-interval: {{ unbound_statistics_interval }}
+    {% endif %}
+    {% if unbound_statistics_cumulative is defined %}
+    statistics-cumulative: {{ unbound_statistics_cumulative }}
+    {% endif %}
+    {% if unbound_extended_statistics is defined %}
+    extended-statistics: {{ unbound_extended_statistics }}
+    {% endif %}
+    {% if unbound_hide_identity is defined %}
+    hide-identity: {{ unbound_hide_identity }}
+    {% endif %}
+    {% if unbound_identity is defined %}
+    identity: {{ unbound_identity }}
+    {% endif %}
+    {% if unbound_hide_version is defined %}
+    hide-version: {{ unbound_hide_version }}
+    {% endif %}
+    {% if unbound_version is defined %}
+    version: {{ unbound_version }}
+    {% endif %}
+
+    num-threads: {{ unbound_num_threads }}
+    {% if unbound_num_queries_per_thread is defined %}
+    num-queries-per-thread: {{ unbound_num_queries_per_thread }}
+    {% endif %}
+    {% if unbound_unwanted_reply_threshold is defined %}
+    unwanted-reply-threshold: {{ unbound_unwanted_reply_threshold }}
+    {% endif %}
+
+    port: {{ unbound_port }}
+    {% for interface in unbound_interfaces %}
+    interface: {{ interface }}
+    {% endfor %}
+    {% if unbound_interface_automatic is defined %}
+    interface-automatic: {{ unbound_interface_automatic }}
+    {% endif %}
+
+    do-ip4: {{ unbound_do_ip4 }}
+    do-ip6: {{ unbound_do_ip6 }}
+    prefer-ip6: {{ unbound_prefer_ip6 }}
+    {% if unbound_tcp_upstream is defined %}
+    tcp-upstream: {{ unbound_tcp_upstream }}
+    {% endif %}
+
+    {% if unbound_ssl_upstream is defined %}
+    ssl-upstream: {{ unbound_ssl_upstream }}
+    {% endif %}
+    {% if unbound_ssl_service_key is defined %}
+    ssl-service-key: {{ unbound_ssl_service_key }}
+    {% endif %}
+    {% if unbound_ssl_service_pem is defined %}
+    ssl-service-pem: {{ unbound_ssl_service_pem }}
+    {% endif %}
+    {% if unbound_ssl_port is defined %}
+    ssl-port: {{ unbound_ssl_port }}
+    {% endif %}
+
+
+    {% for interface in unbound_outgoing_interfaces %}
+    outgoing-interface: {{ interface }}
+    {% endfor %}
+    {% if unbound_outgoing_range is defined %}
+    outgoing-range: {{ unbound_outgoing_range }}
+    {% endif %}
+    {% for policy in unbound_outgoing_policies %}
+    {{ policy }}
+    {% endfor %}
+
+    do-udp: {{ unbound_do_udp }}
+    do-tcp: {{ unbound_do_tcp }}
+    {% if unbound_tcp_mss is defined %}
+    tcp-mss: {{ unbound_tcp_mss }}
+    {% endif %}
+    {% if unbound_outgoing_tcp_mss is defined %}
+    outgoing-tcp-mss: {{ unbound_outgoing_tcp_mss }}
+    {% endif %}
+    {% if unbound_incoming_num_tcp is defined %}
+    incoming-num-tcp: {{ unbound_incoming_num_tcp }}
+    {% endif %}
+    {% if unbound_outgoing_num_tcp is defined %}
+    outgoing-num-tcp: {{ unbound_outgoing_num_tcp }}
+    {% endif %}
+    {% if unbound_edns_buffer_size is defined %}
+    edns-buffer-size: {{ unbound_edns_buffer_size }}
+    {% endif %}
+    {% if unbound_max_udp_size is defined %}
+    max-udp-size: {{ unbound_max_udp_size }}
+
+    {% endif %}
+    {% if unbound_msg_buffer_size is defined %}
+    msg-buffer-size: {{ unbound_msg_buffer_size }}
+    {% endif %}
+    {% if unbound_msg_cache_size is defined %}
+    msg-cache-size: {{ unbound_msg_cache_size }}
+    {% endif %}
+    {% if unbound_msg_cache_slabs is defined %}
+    msg-cache-slabs: {{ unbound_msg_cache_slabs }}
+    {% endif %}
+    {% if unbound_so_rcvbuf is defined %}
+    so-rcvbuf: {{ unbound_so_rcvbuf }}
+    {% endif %}
+    {% if unbound_so_sndbuf is defined %}
+    so-sndbuf: {{ unbound_so_sndbuf }}
+    {% endif %}
+    {% if unbound_so_reuseport is defined %}
+    so-reuseport: {{ unbound_so_reuseport }}
+    {% endif %}
+    {% if unbound_rrset_cache_size is defined %}
+    rrset-cache-size: {{ unbound_rrset_cache_size }}
+    {% endif %}
+    {% if unbound_rrset_cache_slabs is defined %}
+    rrset-cache-slabs: {{ unbound_rrset_cache_slabs }}
+    {% endif %}
+    {% if unbound_rrset_roundrobin is defined %}
+    rrset-roundrobin: {{ unbound_rrset_roundrobin }}
+    {% endif %}
+    {% if unbound_minimal_responses is defined %}
+    minimal-responses: {{ unbound_minimal_responses }}
+    {% endif %}
+    {% if unbound_disable_dnssec_lame_check is defined %}
+    disable-dnssec-lame-check: {{ unbound_disable_dnssec_lame_check }}
+    {% endif %}
+
+    {% if unbound_cache_max_ttl is defined %}
+    cache-max-ttl: {{ unbound_cache_max_ttl }}
+    {% endif %}
+    {% if unbound_cache_min_ttl is defined %}
+    cache-min-ttl: {{ unbound_cache_min_ttl }}
+    {% endif %}
+    {% if unbound_cache_max_negative_ttl is defined %}
+    cache-max-negative-ttl: {{ unbound_cache_max_negative_ttl }}
+    {% endif %}
+    {% if unbound_infra_host_ttl is defined %}
+    infra-host-ttl: {{ unbound_infra_host_ttl }}
+    {% endif %}
+    {% if unbound_infra_cache_slabs is defined %}
+    infra-cache-slabs: {{ unbound_infra_cache_slabs }}
+    {% endif %}
+    {% if unbound_infra_cache_numhosts is defined %}
+    infra-cache-numhosts: {{ unbound_infra_cache_numhosts }}
+    {% endif %}
+    {% if unbound_infra_cache_min_rtt is defined %}
+    infra-cache-min-rtt: {{ unbound_infra_cache_min_rtt }}
+    {% endif %}
+    {% if unbound_prefetch is defined %}
+    prefetch: {{ unbound_prefetch }}
+    {% endif %}
+    {% if unbound_prefetch_key is defined %}
+    prefetch-key: {{ unbound_prefetch_key }}
+    {% endif %}
+    {% if unbound_serve_expired is defined %}
+    serve-expired: {{ unbound_serve_expired }}
+    {% endif %}
+    {% if unbound_key_cache_size is defined %}
+    key-cache-size: {{ unbound_key_cache_size }}
+    {% endif %}
+    {% if unbound_key_cache_slabs is defined %}
+    key-cache-slabs: {{ unbound_key_cache_slabs }}
+    {% endif %}
+    {% if unbound_neg_cache_size is defined %}
+    neg-cache-size: {{ unbound_neg_cache_size }}
+    {% endif %}
+
+    {% if unbound_jostle_timeout is defined %}
+    jostle-timeout: {{ unbound_jostle_timeout }}
+    {% endif %}
+    {% if unbound_delay_close is defined %}
+    delay-close: {{ unbound_delay_close }}
+    {% endif %}
+    {% if unbound_target_fetch_policy is defined %}
+    target-fetch-policy: {{ unbound_target_fetch_policy }}
+    {% endif %}
+    {% if unbound_ratelimit is defined %}
+    ratelimit: {{ unbound_ratelimit }}
+    {% endif %}
+    {% if unbound_ratelimit_size is defined %}
+    ratelimit-size: {{ unbound_ratelimit_size }}
+    {% endif %}
+    {% if unbound_ratelimit_slabs is defined %}
+    ratelimit-slabs: {{ unbound_ratelimit_slabs }}
+    {% endif %}
+    {% if unbound_ratelimit_factor is defined %}
+    ratelimit-factor: {{ unbound_ratelimit_factor }}
+    {% endif %}
+    {% if unbound_ratelimit_for_domain is defined %}
+    ratelimit-for-domain: {{ unbound_ratelimit_for_domain }}
+    {% endif %}
+    {% if unbound_ratelimit_below_domain is defined %}
+    ratelimit-below-domain: {{ unbound_ratelimit_below_domain }}
+    {% endif %}
+
+    {% if unbound_ip_transparent is defined %}
+    ip-transparent: {{ unbound_ip_transparent }}
+    {% endif %}
+    {% if unbound_ip_freebind is defined %}
+    ip-freebind: {{ unbound_ip_freebind }}
+    {% endif %}
+
+    {% for acl in unbound_access_control %}
+    access-control: {{ acl }}
+    {% endfor %}
+    {% for acl in unbound_access_control_tag %}
+    access-control-tag: {{ acl }}
+    {% endfor %}
+    {% for acl in unbound_access_control_tag_action %}
+    access-control-tag-action: {{ acl }}
+    {% endfor %}
+    {% for acl in unbound_access_control_tag_data %}
+    access-control-tag-data: {{ acl }}
+    {% endfor %}
+    {% for acl in unbound_access_control_view %}
+    access-control-view: {{ acl }}
+    {% endfor %}
+
+    {% if unbound_harden_short_bufsize is defined %}
+    harden-short-bufsize: {{ unbound_harden_short_bufsize }}
+    {% endif %}
+    {% if unbound_harden_large_queries is defined %}
+    harden-large-queries: {{ unbound_harden_large_queries }}
+    {% endif %}
+    {% if unbound_harden_glue is defined %}
+    harden-glue: {{ unbound_harden_glue }}
+    {% endif %}
+    {% if unbound_harden_dnssec_stripped is defined %}
+    harden-dnssec-stripped: {{ unbound_harden_dnssec_stripped }}
+    {% endif %}
+    {% if unbound_harden_below_nxdomain is defined %}
+    harden-below-nxdomain: {{ unbound_harden_below_nxdomain }}
+    {% endif %}
+    {% if unbound_harden_referral_path is defined %}
+    harden-referral-path: {{ unbound_harden_referral_path }}
+    {% endif %}
+    {% if unbound_harden_algo_downgrade is defined %}
+    harden-algo-downgrade: {{ unbound_harden_algo_downgrade }}
+    {% endif %}
+    {% if unbound_use_caps_for_id is defined %}
+    use-caps-for-id: {{ unbound_use_caps_for_id }}
+    {% endif %}
+    {% if unbound_caps_whitelist is defined %}
+    caps-whitelist: {{ unbound_caps_whitelist }}
+    {% endif %}
+    {% if unbound_qname_minimisation is defined %}
+    qname-minimisation: {{ unbound_qname_minimisation }}
+    {% endif %}
+    {% if unbound_qname_minimisation_strict is defined %}
+    qname-minimisation-strict: {{ unbound_qname_minimisation_strict }}
+    {% endif %}
+    {% if unbound_ignore_cd_flag is defined %}
+    ignore-cd-flag: {{ unbound_ignore_cd_flag }}
+    {% endif %}
+
+    {% if unbound_root_hints is defined %}
+    root-hints: {{ unbound_root_hints }}
+    {% endif %}
+
+    {% for private_addr in unbound_private_addresses %}
+    private-address: {{ private_addr }}
+    {% endfor %}
+    {% for private_domain in unbound_private_domains %}
+    private-domain: {{ private_domain }}
+    {% endfor %}
+    {% for domain in unbound_domain_insecure %}
+    domain-insecure: {{ domain }}
+    {% endfor %}
+    {% for do_not_query_address in unbound_do_not_query_addresses %}
+    do-not-query-address: {{ do_not_query_address }}
+    {% endif %}
+    {% if unbound_do_not_query_localhost is defined %}
+    do-not-query-localhost: {{ unbound_do_not_query_localhost }}
+    {% endif %}
+    {% if unbound_unblock_lan_zones is defined %}
+    unblock-lan-zones: {{ unbound_unblock_lan_zones }}
+    {% endif %}
+    {% if unbound_insecure_lan_zones is defined %}
+    insecure-lan-zones: {{ unbound_insecure_lan_zones }}
+    {% endif %}
+    {% for zone_and_type in unbound_local_zones %}
+    local-zone: {{ zone_and_type }}
+    {% endfor %}
+    {% for data in unbound_local_datas %}
+    local-data: {{ data }}
+    {% endfor %}
+    {% for ptr in unbound_local_data_ptrs %}
+    local-data-ptr: {{ ptr }}
+    {% endfor %}
+    {% for zone_and_tags in unbound_local_zone_tag %}
+    local-zone-tag: {{ zone_and_tags }}
+    {% endfor %}
+    {% for override in unbound_local_zone_overrides %}
+    local-zone-override: {{ override }}
+    {% endfor %}
+
+    {% if unbound_trust_anchor_file is defined %}
+    trust-anchor-file: {{ unbound_trust_anchor_file }}
+    {% endif %}
+    {% if unbound_auto_trust_anchor_file is defined %}
+    auto-trust-anchor-file: {{ unbound_auto_trust_anchor_file }}
+    {% endif %}
+    {% if unbound_add_holddown is defined %}
+    add-holddown: {{ unbound_add_holddown }}
+    {% endif %}
+    {% if unbound_del_holddown is defined %}
+    del-holddown: {{ unbound_del_holddown }}
+    {% endif %}
+    {% if unbound_permit_small_holddown is defined %}
+    permit-small-holddown: {{ unbound_permit_small_holddown }}
+    {% endif %}
+    {% if unbound_keep_missing is defined %}
+    keep-missing: {{ unbound_keep_missing }}
+    {% endif %}
+    {% for record in unbound_trust_anchors %}
+    trust-anchor: {{ record }}
+    {% endfor %}
+    {% for file in unbound_trusted_keys_files %}
+    trusted-keys-file: {{ file }}
+    {% endfor %}
+
+    {% if unbound_val_override_date is defined %}
+    val-override-date: {{ unbound_val_override_date }}
+    {% endif %}
+    {% if unbound_val_sig_skew_min is defined %}
+    val-sig-skew-min: {{ unbound_val_sig_skew_min }}
+    {% endif %}
+    {% if unbound_val_sig_skew_max is defined %}
+    val-sig-skew-max: {{ unbound_val_sig_skew_max }}
+    {% endif %}
+    {% if unbound_val_bogus_ttl is defined %}
+    val-bogus-ttl: {{ unbound_val_bogus_ttl }}
+    {% endif %}
+    {% if unbound_val_clean_additional is defined %}
+    val-clean-additional: {{ unbound_val_clean_additional }}
+    {% endif %}
+    {% if unbound_val_log_level is defined %}
+    val-log-level: {{ unbound_val_log_level }}
+    {% endif %}
+    {% if unbound_val_permissive_mode is defined %}
+    val-permissive-mode: {{ unbound_val_permissive_mode }}
+    {% endif %}
+    {% if unbound_val_nsec3_keysize_iterations is defined %}
+    val-nsec3-keysize-iterations: {{ unbound_val_nsec3_keysize_iterations }}
+    {% endif %}
+
+    {% if unbound_module_config is defined %}
+    module-config: {{ unbound_module_config }}
+    {% endif %}
+    {% if unbound_dns64_prefix is defined %}
+    dns64-prefix: {{ unbound_dns64_prefix }}
+    {% endif %}
+    {% if unbound_dns64_synthall is defined %}
+    dns64-synthall: {{ unbound_dns64_synthall }}
+    {% endif %}
+
+remote-control:
+    control-enable: {{ unbound_control_enable }}
+    {% for interface in unbound_control_interface %}
+    control-interface: {{ interface }}
+    {% endfor %}
+    {% if unbound_control_port is defined %}
+    control-port: {{ unbound_control_port }}
+    {% endif %}
+    {% if unbound_control_use_cert is defined %}
+    control-use-cert: {{ unbound_control_use_cert }}
+    {% endif %}
+    {% if unbound_server_key_file is defined %}
+    server-key-file: {{ unbound_server_key_file }}
+    {% endif %}
+    {% if unbound_server_cert_file is defined %}
+    server-cert-file: {{ unbound_server_cert_file }}
+    {% endif %}
+    {% if unbound_control_key_file is defined %}
+    control-key-file: {{ unbound_control_key_file }}
+    {% endif %}
+    {% if unbound_control_cert_file is defined %}
+    control-cert-file: {{ unbound_control_cert_file }}
+    {% endif %}
+
+{% for stub_zone in unbound_stub_zones %}
+stub-zone:
+    {% for key, value in stub_zone.iteritems() %}
+    {{ key }}: {{ value }}
+    {% endfor %}
+
+{% endfor %}
+{% for forward_zone in unbound_forward_zones %}
+forward-zone:
+    {% for key, value in forward_zone.iteritems() %}
+    {{ key }}: {{ value }}
+    {% endfor %}
+
+{% endfor %}
+{% for view in unbound_views %}
+view:
+    {% for i in view %}
+    {{ i }}
+    {% endfor %}
+
+{% endfor %}
+{% if unbound_python_script is defined %}
+python:
+    python-script: {{ unbound_python_script }}
+
+{% endif %}
