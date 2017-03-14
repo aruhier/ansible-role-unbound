@@ -33,6 +33,8 @@
 - stat:
     path: "{{ unbound_root_hints }}"
   register: unbound_root_hints_file
+  when: |
+    unbound_root_hints is defined
 - name: Download root hints
   get_url:
     url: https://www.internic.net/domain/named.cache
