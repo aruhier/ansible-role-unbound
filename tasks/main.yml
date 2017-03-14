@@ -30,6 +30,16 @@
   when: |
     unbound_control_enable == "yes" and not unbound_remote_keys.stat.exists
 
+- stat:
+    path: "{{ unbound_root_hints }}"
+  register: unbound_root_hints_file
+- name: Download root hints
+  get_url:
+    url: https://www.internic.net/domain/named.cache
+    dest: "{{ unbound_root_hints }}"
+  when: |
+    unbound_root_hints is defined and not unbound_root_hints_file.stat.exists
+
 # Cannot move this part as the `verify` component of the previous task, because
 # unbound-checkconf fails if the file is outside {{ unbound_directory }}
 - name: Check unbound.conf
