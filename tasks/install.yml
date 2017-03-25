@@ -5,7 +5,7 @@
   with_items: "{{ unbound_packages }}"
   when: ansible_os_family == 'Debian'
 
-- name: Debian | installing unbound
+- name: RedHat | installing unbound
   yum: "name={{ item }} state=present"
   with_items: "{{ unbound_packages }}"
   when: ansible_os_family == 'RedHat'
