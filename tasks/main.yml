@@ -22,7 +22,8 @@
     dest: "{{ unbound_conf_path }}"
   notify: restart unbound
 
-- stat:
+- name: Check if unbound_server.key is present
+  stat:
     path: "{{ unbound_directory }}/unbound_server.key"
   register: unbound_remote_keys
 - name: Setup certificates
