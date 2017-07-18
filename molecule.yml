@@ -1,0 +1,29 @@
+---
+ansible:
+  playbook: tests/test.yml
+
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+docker:
+  containers:
+  - name: ansible-role-unbound-ubuntu
+    image: ubuntu
+    image_version: '16.10'
+  - name: ansible-role-unbound-arch
+    image: archimg/base
+    image_version: full
+    dockerfile: tests/Dockerfile-ArchLinux
+    command: /lib/systemd/systemd
+    privileged: True
+  - name: ansible-role-unbound-centos
+    image: centos
+    image_version: latest
+    command: /usr/lib/systemd/systemd
+    privileged: True
+
+verifier:
+  name: testinfra

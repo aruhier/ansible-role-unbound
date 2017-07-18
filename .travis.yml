@@ -1,32 +1,45 @@
 ---
+language: python
+python: "2.7"
+
+# Spin off separate builds for each of the following versions of Ansible
+env:
+  - ANSIBLE_VERSION=2.2
+  - ANSIBLE_VERSION=2.3
+
+# Require the standard build environment
 sudo: required
-dist: trusty
 
-language: generic
+# Require Docker
+services:
+  - docker
 
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y python python-pip
+# Cache Ansible and Molecule to speed things up
+cache:
+  - pip
 
 install:
-  # Install ansible
-  - sudo pip install ansible
+  # Install Ansible
+  - pip install "ansible~=$ANSIBLE_VERSION"
 
-  # Check ansible version
+  # Install Python API for Docker (required by Molecule Docker driver)
+  - pip install docker
+
+  # Install Molecule
+  - pip install molecule
+
+  # Check Ansible version
   - ansible --version
 
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
+  # Check Molecule version
+  - molecule --version
 
-  # Install role dependencies
-  # ...
+  # Build the Docker images
+  - molecule create
+  - molecule destroy
 
 script:
-  # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-
-  # Run the role/playbook with ansible-playbook
-  - ansible-playbook tests/test.yml -i tests/inventory --connection=local --become
+  - molecule test
 
 notifications:
-webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
