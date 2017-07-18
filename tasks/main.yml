@@ -20,7 +20,7 @@
   template:
     src: unbound.conf.j2
     dest: "{{ unbound_conf_path }}"
-  notify: reload unbound
+  notify: restart unbound
 
 - stat:
     path: "{{ unbound_directory }}/unbound_server.key"

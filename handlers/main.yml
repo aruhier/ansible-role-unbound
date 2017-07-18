@@ -1,9 +1,9 @@
 ---
 
-- name: reload unbound
+- name: restart unbound
   become: yes
   service:
     name: "{{ unbound_service_name }}"
-    state: reloaded
+    state: restarted
 
   # vim: set ts=2 sw=2:
