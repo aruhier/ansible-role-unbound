@@ -26,6 +26,11 @@
   when: |
     unbound_control_enable == "yes" and not unbound_remote_keys.stat.exists
 
+- name: Update root anchor
+  command: unbound-anchor -a "{{ unbound_auto_trust_anchor_file }}"
+  when: unbound_trust_anchor_file
+  changed_when: false
+
 # Cannot move this part as the `verify` component of the previous task, because
 # unbound-checkconf fails if the file is outside {{ unbound_directory }}
 - name: Check unbound.conf
