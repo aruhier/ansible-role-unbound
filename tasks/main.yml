@@ -4,14 +4,9 @@
   include_vars: "{{ item }}"
   with_first_found:
     - files:
-      - "vars/{{ ansible_distribution }}.yml"
-      skip: true
-
-- name: Include release specific variables
-  include_vars: "{{ item }}"
-  with_first_found:
-    - files:
-      - "vars/{{ ansible_distribution_release }}.yml"
+        - "vars/{{ ansible_distribution_release }}.yml"
+        - "vars/{{ ansible_distribution }}.yml"
+        - "vars/{{ ansible_os_family }}.yml"
       skip: true
 
 - include: install.yml
@@ -35,13 +30,13 @@
 # unbound-checkconf fails if the file is outside {{ unbound_directory }}
 - name: Check unbound.conf
   command: unbound-checkconf "{{ unbound_conf_path }}"
-  changed_when: False
+  changed_when: false
 
 - name: Enable unbound service
   service:
     name: "{{ unbound_service_name }}"
     state: started
-    enabled: yes
+    enabled: true
   when: unbound_enable_service
 
 # vim: set ts=2 sw=2:

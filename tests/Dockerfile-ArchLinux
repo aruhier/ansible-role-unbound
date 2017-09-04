@@ -1,4 +1,0 @@
-FROM archimg/base
-
-RUN pacman -Syu --noconfirm && \
-    pacman --noconfirm -S python bash sudo python2 systemd

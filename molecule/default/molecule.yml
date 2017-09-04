@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+
+platforms:
+  - name: ansible-ubuntu-lts
+    image: ubuntu
+    image_version: '16.04'
+  - name: ansible-ubuntu-1704
+    image: ubuntu
+    image_version: '17.04'
+  - name: ansible-arch
+    image: archimg/base
+    image_version: full
+    command: /lib/systemd/systemd
+    privileged: true
+  - name: ansible-centos
+    image: centos
+    image_version: latest
+    command: /usr/lib/systemd/systemd
+    privileged: true
+
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
