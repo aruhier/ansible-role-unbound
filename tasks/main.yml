@@ -26,8 +26,8 @@
   when: |
     unbound_control_enable == "yes" and not unbound_remote_keys.stat.exists
 
-- include: install.yml
-  when: unbound_trust_anchor_file is defined and unbound_trust_anchor_file
+- include: root_anchor.yml
+  when: unbound_auto_trust_anchor_file|default(false)
 
 # Cannot move this part as the `verify` component of the previous task, because
 # unbound-checkconf fails if the file is outside {{ unbound_directory }}

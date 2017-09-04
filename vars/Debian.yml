@@ -1,5 +1,6 @@
 ---
 
-unbound_auto_trust_anchor_file: "/var/lib/unbound/root.key"
+unbound_packages:
+  - unbound
 
 # vim: set ts=2 sw=2:

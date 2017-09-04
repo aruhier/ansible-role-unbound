@@ -9,6 +9,8 @@
 
 - name: Update root anchor
   command: unbound-anchor -a "{{ unbound_auto_trust_anchor_file }}"
-  changed_when: false
+  register: unbound_anchor_rc
+  changed_when: unbound_anchor_rc.rc == 1
+  failed_when: unbound_anchor_rc.rc > 1
 
 # vim: set ts=2 sw=2:

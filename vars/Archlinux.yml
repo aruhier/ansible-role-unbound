@@ -4,6 +4,6 @@ unbound_packages:
   - unbound
   - expat
 
-unbound_trust_anchor_file: "/etc/unbound/trusted-key.key"
+unbound_trust_anchor_file: "trusted-key.key"
 
 # vim: set ts=2 sw=2:
