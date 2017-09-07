@@ -3,8 +3,6 @@
 unbound_conf_path: "/etc/unbound/unbound.conf"
 unbound_enable_service: true
 unbound_service_name: "unbound"
-unbound_packages:
-  - "unbound"
 
 ### Server ###
 
