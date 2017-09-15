@@ -4,5 +4,6 @@ unbound_packages:
   - unbound
 
 unbound_trust_anchor_file: "trusted-key.key"
+unbound_reloaded_state: "reloaded"
 
 # vim: set ts=2 sw=2:

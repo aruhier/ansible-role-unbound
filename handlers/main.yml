@@ -4,6 +4,6 @@
   become: true
   service:
     name: "{{ unbound_service_name }}"
-    state: restarted
+    state: "{{ unbound_reloaded_state }}"
 
 # vim: set ts=2 sw=2:

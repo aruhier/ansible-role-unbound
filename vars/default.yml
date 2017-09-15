@@ -3,4 +3,6 @@
 unbound_packages:
   - "unbound"
 
+unbound_reloaded_state: "reloaded"
+
 # vim: set ts=2 sw=2:
