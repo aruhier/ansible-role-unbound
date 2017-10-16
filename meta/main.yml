@@ -20,6 +20,9 @@ galaxy_info:
       versions:
         - all
     - name: Archlinux
+    - name: Alpine
+      versions:
+        - all
 
   galaxy_tags:
     - networking

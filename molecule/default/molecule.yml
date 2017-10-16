@@ -11,6 +11,9 @@ platforms:
   - name: ansible-ubuntu-1704
     image: ubuntu
     image_version: '17.04'
+  - name: ansible-alpine
+    image: python
+    image_version: '2-alpine3.6'
   - name: ansible-arch
     image: archimg/base
     image_version: full

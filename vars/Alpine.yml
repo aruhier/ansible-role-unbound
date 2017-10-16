@@ -1,0 +1,13 @@
+---
+
+unbound_packages:
+  - unbound
+  - expat
+
+unbound_server_key_file: "/etc/unbound/unbound_server.key"
+unbound_server_cert_file: "/etc/unbound/unbound_server.pem"
+unbound_control_key_file: "/etc/unbound/unbound_control.key"
+unbound_control_cert_file: "/etc/unbound/unbound_control.pem"
+unbound_reloaded_state: "reloaded"
+
+# vim: set ts=2 sw=2:
