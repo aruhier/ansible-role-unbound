@@ -25,6 +25,9 @@ install:
   # Install Python API for Docker (required by Molecule Docker driver)
   - pip install docker
 
+  # Lock docker-py to 2.7 to avoid crashes when creating docker images
+  - pip install "docker~=2.7"
+
   # Install Molecule
   - pip install molecule
 
