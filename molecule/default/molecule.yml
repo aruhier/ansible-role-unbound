@@ -14,9 +14,6 @@ platforms:
   - name: ansible-ubuntu-lts
     image: ubuntu
     image_version: '18.04'
-  - name: ansible-alpine
-    image: python
-    image_version: '2-alpine3.7'
   - name: ansible-arch
     image: archimg/base
     image_version: full
