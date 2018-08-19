@@ -6,6 +6,13 @@ driver:
 ansible:
   verbose: vv
 
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      all:
+        unbound_enable_service: false
+
 platforms:
   - name: ansible-ubuntu-16-04-lts
     image: ubuntu
