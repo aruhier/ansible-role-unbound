@@ -5,15 +5,18 @@ driver:
   name: docker
 
 platforms:
-  - name: ansible-ubuntu-lts
+  - name: ansible-ubuntu-16-04-lts
     image: ubuntu
     image_version: '16.04'
   - name: ansible-ubuntu-1704
     image: ubuntu
     image_version: '17.04'
+  - name: ansible-ubuntu-lts
+    image: ubuntu
+    image_version: '18.04'
   - name: ansible-alpine
     image: python
-    image_version: '2-alpine3.6'
+    image_version: '2-alpine3.7'
   - name: ansible-arch
     image: archimg/base
     image_version: full
