@@ -67,6 +67,15 @@ unbound_control_interface: []
 
 unbound_stub_zones: []  # list of dicts
 unbound_forward_zones: []  # list of dicts
+
+# For stub and forward zones, if a key inside one of the dict is an iterable,
+# it will iterate inside it to duplicate the option with all the contained
+# values.
+# Can be useful in case of multiple forward-addr for a same zone:
+#   Example:
+#     unbound_forward_zones:
+#       - {name: "test.tld", "forward-addr": ["192.0.2.5", "192.0.2.6"]}
+
 unbound_views: []  # list of strings, as options can be multiples
 ```
 

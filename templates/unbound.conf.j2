@@ -408,16 +408,32 @@ remote-control:
 
 {% for stub_zone in unbound_stub_zones %}
 stub-zone:
-    {% for key, value in stub_zone.iteritems() %}{{ key }}: {{ value }}
+{% for key, value in stub_zone.items() %}
+{%- if value is not string and value is iterable %}
+    {% for i in value %}
+    {{ key }}: {{ i }}
     {% endfor %}
+{%- else %}
+    {{ key }}: {{ value }}
+{% endif %}
+{% endfor %}
 
 {% endfor %}
+
 {% for forward_zone in unbound_forward_zones %}
 forward-zone:
-    {% for key, value in forward_zone.iteritems() %}{{ key }}: {{ value }}
+{% for key, value in forward_zone.items() %}
+{% if value is not string and value is iterable %}
+    {% for i in value %}
+    {{ key }}: {{ i }}
     {% endfor %}
+{% else %}
+    {{ key }}: {{ value }}
+{% endif %}
+{% endfor %}
 
 {% endfor %}
+
 {% for view in unbound_views %}
 view:
     {% for i in view %}{{ i }}
