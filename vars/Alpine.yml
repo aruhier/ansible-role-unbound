@@ -3,6 +3,7 @@
 unbound_packages:
   - unbound
   - expat
+  - openssl
 
 unbound_server_key_file: "/etc/unbound/unbound_server.key"
 unbound_server_cert_file: "/etc/unbound/unbound_server.pem"
