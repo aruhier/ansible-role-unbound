@@ -23,8 +23,8 @@ platforms:
   - name: ansible-debian
     image: debian:latest
   - name: ansible-arch
-    image: archimg/base:full
-    command: /lib/systemd/systemd
+    image: archlinux/base:latest
+    command: /usr/lib/systemd/systemd
     privileged: true
   - name: ansible-centos
     image: centos:latest
