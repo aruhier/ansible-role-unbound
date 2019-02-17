@@ -15,22 +15,19 @@ provisioner:
 
 platforms:
   - name: ansible-ubuntu-16-04-lts
-    image: ubuntu
-    image_version: '16.04'
-  - name: ansible-ubuntu-1704
-    image: ubuntu
-    image_version: '17.04'
+    image: ubuntu:16.04
   - name: ansible-ubuntu-lts
-    image: ubuntu
-    image_version: '18.04'
+    image: ubuntu:18.04
+  - name: ansible-ubuntu-18-10
+    image: ubuntu:18.10
+  - name: ansible-debian
+    image: debian:latest
   - name: ansible-arch
-    image: archimg/base
-    image_version: full
+    image: archimg/base:full
     command: /lib/systemd/systemd
     privileged: true
   - name: ansible-centos
-    image: centos
-    image_version: latest
+    image: centos:latest
     command: /usr/lib/systemd/systemd
     privileged: true
 
