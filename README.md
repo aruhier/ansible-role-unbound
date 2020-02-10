@@ -99,7 +99,8 @@ None
 Authors
 -------
 
-Anthony Ruhier (Anthony25)
+  * Anthony Ruhier (Anthony25)
+  * Jonathan Wright (neonardo1)
 
 License
 -------
