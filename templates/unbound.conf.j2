@@ -445,3 +445,20 @@ python:
     python-script: {{ unbound_python_script }}
 
 {% endif %}
+
+{% if unbound_cachedb_backend is defined %}
+cachedb:
+    backend: {{ unbound_cachedb_backend }}
+    {% if unbound_cachedb_secret_seed is defined %}
+    secret-seed: {{ unbound_cachedb_secret_seed }}
+    {% endif %}
+    {% if unbound_cachedb_redis_server_host is defined %}
+    redis-server-host: {{ unbound_cachedb_redis_server_host }}
+    {% endif %}
+    {% if unbound_cachedb_redis_server_port is defined %}
+    redis-server-port: {{ unbound_cachedb_redis_server_port }}
+    {% endif %}
+    {% if unbound_cachedb_redis_timeout is defined %}
+    redis-timeout: {{ unbound_cachedb_redis_timeout }}
+    {% endif %}
+{% endif %}
