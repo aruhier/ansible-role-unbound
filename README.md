@@ -1,7 +1,7 @@
 Ansible Role: Unbound
 =====================
 
-[![Build Status](https://travis-ci.org/Anthony25/ansible-role-unbound.svg?branch=master)](https://travis-ci.org/Anthony25/ansible-role-unbound)
+[![Build Status](https://travis-ci.org/aruhier/ansible-role-unbound.svg?branch=master)](https://travis-ci.org/aruhier/ansible-role-unbound)
 
 Ansible role to install and configure Unbound.
 
@@ -99,7 +99,7 @@ None
 Authors
 -------
 
-  * Anthony Ruhier (Anthony25)
+  * Anthony Ruhier (aruhier)
   * Jonathan Wright (neonardo1)
 
 License
