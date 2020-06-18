@@ -1,15 +1,13 @@
 ---
 language: python
-python: "2.7"
 
 # Spin off separate builds for each of the following versions of Ansible
 env:
-  - ANSIBLE_VERSION=2.2
-  - ANSIBLE_VERSION=2.3
-  - ANSIBLE_VERSION=2.4
   - ANSIBLE_VERSION=2.5
   - ANSIBLE_VERSION=2.6
   - ANSIBLE_VERSION=2.7
+  - ANSIBLE_VERSION=2.8
+  - ANSIBLE_VERSION=2.9
 
 # Require the standard build environment
 sudo: required

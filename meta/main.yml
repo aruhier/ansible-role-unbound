@@ -4,7 +4,7 @@ galaxy_info:
   description: Install and configure Unbound
   issue_tracker_url: https://github.com/Anthony25/ansible-role-unbound/issues
   license: BSD
-  min_ansible_version: 2.0
+  min_ansible_version: 2.5
 
   platforms:
     - name: Ubuntu
