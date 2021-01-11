@@ -89,7 +89,7 @@ server:
 
 
 {% for interface in unbound_outgoing_interfaces %}
-outgoing-interface: {{ interface }}
+    outgoing-interface: {{ interface }}
 {% endfor %}
 {% if unbound_outgoing_range is defined %}
     outgoing-range: {{ unbound_outgoing_range }}
