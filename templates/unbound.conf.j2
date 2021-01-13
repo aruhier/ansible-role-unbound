@@ -67,6 +67,9 @@ server:
 
     do-ip4: {{ unbound_do_ip4 }}
     do-ip6: {{ unbound_do_ip6 }}
+{% if unbound_prefer_ip4 is defined %}
+    prefer-ip4: {{ unbound_prefer_ip4 }}
+{% endif %}
 {% if unbound_prefer_ip6 is defined %}
     prefer-ip6: {{ unbound_prefer_ip6 }}
 {% endif %}
