@@ -1,5 +1,9 @@
 #{{ ansible_managed }}
 
+{% for include in unbound_pre_includes %}
+include: {{ include }}
+{% endfor %}
+
 server:
     verbosity: {{ unbound_verbosity }}
     username: "{{ unbound_username }}"
@@ -465,3 +469,7 @@ cachedb:
     redis-timeout: {{ unbound_cachedb_redis_timeout }}
     {% endif %}
 {% endif %}
+
+{% for include in unbound_post_includes %}
+include: {{ include }}
+{% endfor %}
