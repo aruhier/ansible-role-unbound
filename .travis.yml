@@ -3,7 +3,6 @@ language: python
 
 # Spin off separate builds for each of the following versions of Ansible
 env:
-  - ANSIBLE_VERSION=2.5
   - ANSIBLE_VERSION=2.6
   - ANSIBLE_VERSION=2.7
   - ANSIBLE_VERSION=2.8
@@ -23,8 +22,7 @@ cache:
 
 install:
   # Install Ansible
-  - pip install "ansible~=$ANSIBLE_VERSION"
-
+  - pip install "ansible~=$ANSIBLE_VERSION.0"
   - pip install docker molecule[docker]
 
   # Check Ansible version
