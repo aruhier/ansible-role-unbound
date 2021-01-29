@@ -2,6 +2,9 @@ Ansible Role: Unbound
 =====================
 
 [![Build Status](https://travis-ci.org/aruhier/ansible-role-unbound.svg?branch=master)](https://travis-ci.org/aruhier/ansible-role-unbound)
+![Ansible Role](https://img.shields.io/ansible/role/41179)
+![Ansible Role](https://img.shields.io/ansible/role/d/41179)
+![Ansible Quality Score](https://img.shields.io/ansible/quality/41179)
 
 Ansible role to install and configure Unbound.
 
