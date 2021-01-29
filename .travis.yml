@@ -3,8 +3,6 @@ language: python
 
 # Spin off separate builds for each of the following versions of Ansible
 env:
-  - ANSIBLE_VERSION=2.6
-  - ANSIBLE_VERSION=2.7
   - ANSIBLE_VERSION=2.8
   - ANSIBLE_VERSION=2.9
   - ANSIBLE_VERSION=2.10
