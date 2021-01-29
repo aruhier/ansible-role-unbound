@@ -1,5 +1,16 @@
 ---
 - name: Converge
   hosts: all
+
+  pre_tasks:
+    - name: Update APT Cache
+      apt:
+        cache_valid_time: 0
+        update_cache: true
+      register: _pre_update_apt_cache
+      until: _pre_update_apt_cache is succeeded
+      when:
+        - ansible_pkg_mgr == "apt"
+
   roles:
     - role: ansible-role-unbound

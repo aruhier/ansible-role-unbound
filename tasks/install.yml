@@ -1,13 +1,4 @@
 ---
-- name: Update APT Cache
-  apt:
-    cache_valid_time: 600
-    update_cache: true
-  register: _pre_update_apt_cache
-  until: _pre_update_apt_cache is succeeded
-  when:
-    - ansible_pkg_mgr == "apt"
-
 - name: Installing Unbound Packages
   package: "name={{ item }} state=present"
   with_items: "{{ unbound_packages }}"
