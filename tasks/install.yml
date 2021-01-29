@@ -1,16 +1,15 @@
 ---
-- name: Installing Unbound Packages (Debian-based system)
+- name: Update APT Cache
   apt:
-    name: "{{ item }}"
-    state: "present"
-    update_cache: "yes"
     cache_valid_time: 600
-  with_items: "{{ unbound_packages }}"
-  when: ansible_os_family == "Debian"
+    update_cache: true
+  register: _pre_update_apt_cache
+  until: _pre_update_apt_cache is succeeded
+  when:
+    - ansible_pkg_mgr == "apt"
 
-- name: Installing Unbound Packages (Generic)
+- name: Installing Unbound Packages
   package: "name={{ item }} state=present"
   with_items: "{{ unbound_packages }}"
-  when: ansible_os_family != "Debian"
 
 # vim: set ts=2 sw=2:
