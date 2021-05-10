@@ -417,9 +417,9 @@ remote-control:
 stub-zone:
 {% for key, value in stub_zone.items() %}
 {%- if value is not string and value is iterable %}
-    {% for i in value %}
+{% for i in value %}
     {{ key }}: {{ i }}
-    {% endfor %}
+{% endfor %}
 {%- else %}
     {{ key }}: {{ value }}
 {% endif %}
@@ -431,9 +431,9 @@ stub-zone:
 forward-zone:
 {% for key, value in forward_zone.items() %}
 {% if value is not string and value is iterable %}
-    {% for i in value %}
+{% for i in value %}
     {{ key }}: {{ i }}
-    {% endfor %}
+{% endfor %}
 {% else %}
     {{ key }}: {{ value }}
 {% endif %}
