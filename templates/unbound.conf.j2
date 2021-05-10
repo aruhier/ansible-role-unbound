@@ -389,6 +389,10 @@ server:
     dns64-synthall: {{ unbound_dns64_synthall }}
 {% endif %}
 
+{% if unbound_tls_cert_bundle is defined %}
+    tls-cert-bundle: {{ unbound_tls_cert_bundle }}
+{% endif %}
+
 remote-control:
     control-enable: {{ unbound_control_enable }}
 {% for interface in unbound_control_interface %}
