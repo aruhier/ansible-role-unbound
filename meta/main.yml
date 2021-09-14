@@ -1,30 +1,30 @@
 ---
 galaxy_info:
-  author: Anthony Ruhier (Anthony25)
+  author: Anthony Ruhier (aruhier)
   description: Install and configure Unbound
-  issue_tracker_url: https://github.com/Anthony25/ansible-role-unbound/issues
+  issue_tracker_url: https://github.com/aruhier/ansible-role-unbound/issues
   license: BSD
-  min_ansible_version: 2.0
+  min_ansible_version: 2.8
 
   platforms:
     - name: Ubuntu
       versions:
-        - all
+        - Xenial
+        - Bionic
+        - Focal
     - name: Debian
       versions:
-        - jessie
-    - name: EL
+        - Stretch
+        - Buster
+    - name: CentOS
       versions:
-        - all
-    - name: Fedora
-      versions:
-        - all
+        - 8
     - name: Archlinux
-    - name: Alpine
-      versions:
-        - all
 
   galaxy_tags:
     - networking
+    - dns
+    - unbound
+    - system
 
 dependencies: []
