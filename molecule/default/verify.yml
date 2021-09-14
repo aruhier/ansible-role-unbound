@@ -1,0 +1,7 @@
+---
+
+- name: Verify
+  hosts: all
+  tasks:
+    - name: check unbound configuration
+      command: unbound-checkconf
