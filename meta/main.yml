@@ -19,6 +19,9 @@ galaxy_info:
     - name: CentOS
       versions:
         - 8
+    - name: AlmaLinux
+      versions:
+        - 8
     - name: Archlinux
 
   galaxy_tags:
