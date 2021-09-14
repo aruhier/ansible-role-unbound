@@ -1,5 +1,9 @@
 #{{ ansible_managed }}
 
+{% for include in unbound_pre_includes %}
+include: {{ include }}
+{% endfor %}
+
 server:
     verbosity: {{ unbound_verbosity }}
     username: "{{ unbound_username }}"
@@ -67,6 +71,9 @@ server:
 
     do-ip4: {{ unbound_do_ip4 }}
     do-ip6: {{ unbound_do_ip6 }}
+{% if unbound_prefer_ip4 is defined %}
+    prefer-ip4: {{ unbound_prefer_ip4 }}
+{% endif %}
 {% if unbound_prefer_ip6 is defined %}
     prefer-ip6: {{ unbound_prefer_ip6 }}
 {% endif %}
@@ -89,7 +96,7 @@ server:
 
 
 {% for interface in unbound_outgoing_interfaces %}
-outgoing-interface: {{ interface }}
+    outgoing-interface: {{ interface }}
 {% endfor %}
 {% if unbound_outgoing_range is defined %}
     outgoing-range: {{ unbound_outgoing_range }}
@@ -382,6 +389,10 @@ outgoing-interface: {{ interface }}
     dns64-synthall: {{ unbound_dns64_synthall }}
 {% endif %}
 
+{% if unbound_tls_cert_bundle is defined %}
+    tls-cert-bundle: {{ unbound_tls_cert_bundle }}
+{% endif %}
+
 remote-control:
     control-enable: {{ unbound_control_enable }}
 {% for interface in unbound_control_interface %}
@@ -410,9 +421,9 @@ remote-control:
 stub-zone:
 {% for key, value in stub_zone.items() %}
 {%- if value is not string and value is iterable %}
-    {% for i in value %}
+{% for i in value %}
     {{ key }}: {{ i }}
-    {% endfor %}
+{% endfor %}
 {%- else %}
     {{ key }}: {{ value }}
 {% endif %}
@@ -424,9 +435,9 @@ stub-zone:
 forward-zone:
 {% for key, value in forward_zone.items() %}
 {% if value is not string and value is iterable %}
-    {% for i in value %}
+{% for i in value %}
     {{ key }}: {{ i }}
-    {% endfor %}
+{% endfor %}
 {% else %}
     {{ key }}: {{ value }}
 {% endif %}
@@ -462,3 +473,7 @@ cachedb:
     redis-timeout: {{ unbound_cachedb_redis_timeout }}
     {% endif %}
 {% endif %}
+
+{% for include in unbound_post_includes %}
+include: {{ include }}
+{% endfor %}

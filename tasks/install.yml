@@ -1,6 +1,5 @@
 ---
-
-- name: Installing unbound
+- name: Installing Unbound Packages
   package: "name={{ item }} state=present"
   with_items: "{{ unbound_packages }}"
 

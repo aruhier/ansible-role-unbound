@@ -1,5 +1,11 @@
 ---
 
+- name: Get current state via unbound control
+  command: unbound-control status
+  register: _unbound_status
+  changed_when: false
+  failed_when: false
+
 - include: dist_vars.yml
 
 - include: install.yml
