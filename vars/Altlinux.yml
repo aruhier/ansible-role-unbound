@@ -1,0 +1,17 @@
+---
+
+unbound_conf_path: "/var/lib/unbound/unbound.conf"
+
+unbound_directory: "/var/lib/unbound/"
+
+unbound_packages:
+  - "unbound"
+
+unbound_username: "_unbound"
+
+unbound_reloaded_state: "reloaded"
+
+unbound_service_name: "unbound.service"
+
+# vim: set ts=2 sw=2:
+

@@ -22,6 +22,9 @@ galaxy_info:
     - name: AlmaLinux
       versions:
         - 8
+    - name: AltLinux
+      versions:
+        - 7
     - name: Archlinux
 
   galaxy_tags:
