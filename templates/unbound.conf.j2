@@ -190,6 +190,21 @@ server:
 {% if unbound_serve_expired is defined %}
     serve-expired: {{ unbound_serve_expired }}
 {% endif %}
+{% if unbound_serve_expired_ttl is defined %}
+    serve-expired-ttl: {{ unbound_serve_expired_ttl }}
+{% endif %}
+{% if unbound_serve_expired_ttl_reset is defined %}
+    serve-expired-ttl-reset: {{ unbound_serve_expired_ttl_reset }}
+{% endif %}
+{% if unbound_serve_expired_reply_ttl is defined %}
+    serve-expired-reply-ttl: {{ unbound_serve_expired_reply_ttl }}
+{% endif %}
+{% if unbound_serve_expired_client_timeout is defined %}
+    serve-expired-client-timeout: {{ unbound_serve_expired_client_timeout }}
+{% endif %}
+{% if unbound_serve_original_ttl is defined %}
+    serve-original-ttl: {{ unbound_serve_original_ttl }}
+{% endif %}
 {% if unbound_key_cache_size is defined %}
     key-cache-size: {{ unbound_key_cache_size }}
 {% endif %}
