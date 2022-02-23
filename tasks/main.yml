@@ -6,9 +6,11 @@
   changed_when: false
   failed_when: false
 
-- include: dist_vars.yml
+- name: include dist_vars.yml
+  ansible.builtin.import_tasks: dist_vars.yml
 
-- include: install.yml
+- name: include install.yml
+  ansible.builtin.import_tasks: install.yml
 
 - name: Configure unbound.conf
   template:
@@ -25,7 +27,8 @@
   when: |
     unbound_control_enable == "yes" and not unbound_remote_keys.stat.exists
 
-- include: root_anchor.yml
+- name: include root_anchor.yml
+  ansible.builtin.import_tasks: root_anchor.yml
   when: unbound_auto_trust_anchor_file|default(false)
 
 # Cannot move this part as the `verify` component of the previous task, because
