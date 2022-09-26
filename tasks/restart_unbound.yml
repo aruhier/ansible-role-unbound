@@ -1,0 +1,14 @@
+- block:
+   - name: restart unbound gracefully
+     register: _handler_status
+     ignore_errors: true
+     service:
+       name: "{{ unbound_service_name }}"
+       state: "{{ unbound_reloaded_state }}"
+
+   - name: force restart unbound
+     when: _handler_status | default({}) is failed
+     service:
+       name: "{{ unbound_service_name }}"
+       state: "restarted"
+  become: true

@@ -1,9 +1,6 @@
 ---
 
 - name: restart unbound
-  become: true
-  service:
-    name: "{{ unbound_service_name }}"
-    state: "{{ unbound_reloaded_state }}"
+  ansible.builtin.include_tasks: tasks/restart_unbound.yml
 
 # vim: set ts=2 sw=2:
