@@ -26,6 +26,9 @@ galaxy_info:
       versions:
         - 7
     - name: Archlinux
+    - name: OracleLinux
+      versions:
+        - 8
 
   galaxy_tags:
     - networking
