@@ -1,0 +1,19 @@
+---
+
+unbound_conf_path: "/var/unbound/etc/unbound.conf"
+
+unbound_directory: "/var/unbound/"
+
+unbound_auto_trust_anchor_file: "/var/unbound/db/root.key"
+unbound_auto_trust_anchor_owner: root
+unbound_auto_trust_anchor_group: wheel
+
+unbound_reloaded_state: "reloaded"
+
+unbound_server_key_file: "/var/unbound/etc/unbound_server.key"
+unbound_server_cert_file: "/var/unbound/etc/unbound_server.pem"
+unbound_control_key_file: "/var/unbound/etc/unbound_control.key"
+unbound_control_cert_file: "/var/unbound/etc/unbound_control.pem"
+
+
+# vim: set ts=2 sw=2:

@@ -7,6 +7,20 @@
     mode: "u=rw,g=r,o=r"
     owner: root
     group: root
+  when: |
+    unbound_auto_trust_anchor_owner is undefined and
+    unbound_auto_trust_anchor_group is undefined
+
+- name: Touch the auto trust anchor file
+  file:
+    path: "{{ unbound_auto_trust_anchor_file }}"
+    state: touch
+    mode: "u=rw,g=r,o=r"
+    owner: "{{ unbound_auto_trust_anchor_owner }}"
+    group: "{{ unbound_auto_trust_anchor_group }}"
+  when: |
+    unbound_auto_trust_anchor_owner is defined and
+    unbound_auto_trust_anchor_group is defined
 
 - name: Update root anchor
   command: unbound-anchor -a "{{ unbound_auto_trust_anchor_file }}"
