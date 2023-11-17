@@ -68,6 +68,7 @@ unbound_control_interface: []
 
 ### Stub, forward zones and others ###
 
+unbound_rpz_zones: []  # list of dicts
 unbound_stub_zones: []  # list of dicts
 unbound_forward_zones: []  # list of dicts
 
