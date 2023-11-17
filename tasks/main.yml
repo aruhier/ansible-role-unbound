@@ -11,6 +11,7 @@
 
 - name: include install.yml
   ansible.builtin.import_tasks: install.yml
+  when: unbound_packages is defined
 
 - name: Configure unbound.conf
   template:
