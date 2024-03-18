@@ -446,6 +446,20 @@ rpz:
 
 {% endfor %}
 
+{% for auth_zone in unbound_auth_zones %}
+auth-zone:
+{% for key, value in auth_zone.items() %}
+{%- if value is not string and value is iterable %}
+{% for i in value %}
+    {{ key }}: {{ i }}
+{% endfor %}
+{%- else %}
+    {{ key }}: {{ value }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+
 {% for stub_zone in unbound_stub_zones %}
 stub-zone:
 {% for key, value in stub_zone.items() %}
