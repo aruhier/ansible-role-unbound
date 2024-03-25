@@ -8,9 +8,8 @@ server:
     verbosity: {{ unbound_verbosity }}
     username: "{{ unbound_username }}"
     directory: "{{ unbound_directory }}"
-{% if unbound_use_syslog is defined and unbound_use_syslog == "yes" %}
-    use-syslog: {{ unbound_use_syslog }}
-{% elif unbound_logfile is defined %}
+{% if unbound_logfile is defined %}
+    use-syslog: no
     logfile: {{ unbound_logfile }}
 {% endif %}
 {% if unbound_log_identity is defined %}
