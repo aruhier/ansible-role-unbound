@@ -95,6 +95,8 @@ Check in the `unbound.conf.j2` template if the option is listed, otherwise do
 not hesitate to open an issue and I will include it (it is possible that
 options brought by a new unbound release would be missing here).
 
+When setting `unbound_logfile`, `use-syslog` will be set as "no" at the same time because it will otherwise overwrite the custom logfile config. ref: [unbound doc](https://linux.die.net/man/5/unbound.conf).
+
 Dependencies
 ------------
 
