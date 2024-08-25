@@ -1,4 +1,4 @@
-#{{ ansible_managed }}
+{{ ansible_managed | comment }}
 
 {% for include in unbound_pre_includes %}
 include: {{ include }}
