@@ -24,6 +24,9 @@ server:
 {% if unbound_log_queries is defined %}
     log-queries: {{ unbound_log_queries }}
 {% endif %}
+{% if unbound_log_servfail is defined %}
+    log-servfail: {{ unbound_log_servfail }}
+{% endif %}
 {% if unbound_pidfile is defined %}
     pidfile: {{ unbound_pidfile }}
 {% endif %}
