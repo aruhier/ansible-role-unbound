@@ -255,6 +255,9 @@ server:
 {% for acl in unbound_access_control %}
     access-control: {{ acl }}
 {% endfor %}
+{% if unbound_define_tag is defined %}
+    define-tag: "{{ unbound_define_tag }}"
+{% endif %}
 {% for acl in unbound_access_control_tag %}
     access-control-tag: {{ acl }}
 {% endfor %}
