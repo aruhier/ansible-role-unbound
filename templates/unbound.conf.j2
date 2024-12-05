@@ -316,10 +316,10 @@ server:
     private-address: {{ private_addr }}
 {% endfor %}
 {% for private_domain in unbound_private_domains %}
-    private-domain: {{ private_domain }}
+    private-domain: "{{ private_domain }}"
 {% endfor %}
 {% for domain in unbound_domains_insecure %}
-    domain-insecure: {{ domain }}
+    domain-insecure: "{{ domain }}"
 {% endfor %}
 {% for do_not_query_address in unbound_do_not_query_addresses %}
     do-not-query-address: {{ do_not_query_address }}
@@ -400,7 +400,7 @@ server:
 {% endif %}
 
 {% if unbound_module_config is defined %}
-    module-config: {{ unbound_module_config }}
+    module-config: "{{ unbound_module_config }}"
 {% endif %}
 {% if unbound_dns64_prefix is defined %}
     dns64-prefix: {{ unbound_dns64_prefix }}
