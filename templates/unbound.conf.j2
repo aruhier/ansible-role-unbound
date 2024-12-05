@@ -437,6 +437,53 @@ remote-control:
     control-cert-file: {{ unbound_control_cert_file }}
 {% endif %}
 
+{% if unbound_dnstap_enable is defined %}
+dnstap:
+    dnstap-enable: {{ unbound_dnstap_enable }}
+{% if unbound_dnstap_bidirectional is defined %}
+    dnstap-bidirectional: {{ unbound_dnstap_bidirectional }}
+{% endif %}
+{% if unbound_dnstap_socket_path is defined %}
+    dnstap-socket-path: "{{ unbound_dnstap_socket_path }}"
+{% endif %}
+{% if unbound_dnstap_ip is defined %}
+    dnstap-ip: "{{ unbound_dnstap_ip }}"
+{% endif %}
+{% if unbound_dnstap_tls is defined %}
+    dnstap-tls: {{ unbound_dnstap_tls }}
+{% endif %}
+{% if unbound_dnstap_send_identity is defined %}
+    dnstap-send-identity: {{ unbound_dnstap_send_identity }}
+{% endif %}
+{% if unbound_dnstap_send_version is defined %}
+    dnstap-send-version: {{ unbound_dnstap_send_version }}
+{% endif %}
+{% if unbound_dnstap_identity is defined %}
+    dnstap-identity: "{{ unbound_dnstap_identity }}"
+{% endif %}
+{% if unbound_dnstap_version is defined %}
+    dnstap-version: "{{ unbound_dnstap_version }}"
+{% endif %}
+{% if dnstap_log_resolver_query_messages is defined %}
+    dnstap-log-resolver-query-messages: {{ dnstap_log_resolver_query_messages }}
+{% endif %}
+{% if dnstap_log_resolver_response_messages is defined %}
+    dnstap-log-resolver-response-messages: {{ dnstap_log_resolver_response_messages }}
+{% endif %}
+{% if dnstap_log_client_query_messages is defined %}
+    dnstap-log-client-query-messages: {{ dnstap_log_client_query_messages }}
+{% endif %}
+{% if dnstap_log_client_response_messages is defined %}
+    dnstap-log-client-response-messages: {{ dnstap_log_client_response_messages }}
+{% endif %}
+{% if dnstap_log_forwarder_query_messages is defined %}
+    dnstap-log-forwarder-query-messages: {{ dnstap_log_forwarder_query_messages }}
+{% endif %}
+{% if dnstap_log_forwarder_response_messages is defined %}
+    dnstap-log-forwarder-response-messages: {{ dnstap_log_forwarder_response_messages }}
+{% endif %}
+{% endif %}
+
 {% for rpz_zone in unbound_rpz_zones %}
 rpz:
 {% for key, value in rpz_zone.items() %}
