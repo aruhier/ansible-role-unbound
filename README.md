@@ -106,7 +106,7 @@ Authors
 -------
 
   * Anthony Ruhier (aruhier)
-  * Jonathan Wright (neonardo1)
+  * Jonathan Wright (jonathanspw)
 
 License
 -------
